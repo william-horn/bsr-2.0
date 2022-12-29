@@ -15,9 +15,7 @@ async function dbConnect() {
   console.log('mongo running in dev mode: ', DEV);
   
   const db = await mongoose.connect(
-    (DEV
-      ? 'mongodb://localhost/test'
-      : process.env.MONGODB_URI), 
+    (process.env.MONGODB_URI), 
     {
       useNewUrlParser: true,
       useUnifiedTopology: true

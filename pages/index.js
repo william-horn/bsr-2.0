@@ -38,7 +38,7 @@ export default function Home() {
   }
   
   return (
-    <Container className="bg-blue-500 page h-[200vh]">
+    <Container className="bg-blue-500 page min-h-[200vh]">
       <Container className="w-[50%] mx-auto flex flex-col items-center bg-gray-500 h-full">
         <Title className="my-4 text-2xl">Example of icons mixed in text</Title>
 

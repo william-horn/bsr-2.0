@@ -7,12 +7,13 @@ const handler = async function (req, res) {
       method, 
       db, 
       query, 
+      headers,
       body: payload
     } = req;
 
     switch (method) {
       case 'GET':
-        const creatures = await db.Creature.find({});
+        const creatures = await db.Creature.find({}).limit(50);
         res.status(200).json(creatures);
 
         break;

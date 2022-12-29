@@ -1,7 +1,8 @@
+import withDBConnect from "../../../lib/middleware/withDBConnect";
+import withApiHeaders from "../../../lib/middleware/withApiHeaders";
 
-
-console.log('index of creatures api');
-
-export default async function handler(req, res) {
+const handler = async function (req, res) {
   res.status(200).json({ message: 'testing index' });
 }
+
+export default withDBConnect(withApiHeaders(handler));

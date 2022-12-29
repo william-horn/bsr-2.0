@@ -102,6 +102,40 @@ export default function Home() {
         </Button>
 
 
+        <Button onClick={async () => {
+          const res = await fetch('/api/creatures', {
+            method: 'POST',
+            body: JSON.stringify({ 
+              name: 'William',
+              url: 'www.will.com',
+              stats: {
+                skinny: true,
+                smart: 'kind of not really',
+                tired: true
+              },
+              drops: [
+                { 
+                  category: 'ring', 
+                  items: [
+                    { name: 'lucky', url: '.com', dropTrials: 0, dropSuccesses: 0, avgDropRate: 0 },
+                    { name: 'gold', url: '.com', dropTrials: 0, dropSuccesses: 0, avgDropRate: 0 },
+                  ]
+                }
+              ]
+            }),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          const data = await res.json();
+
+          console.log('got back from post: ', data);
+        }}>
+          Post Creatures Data
+        </Button>
+
+
+
         <Title className="my-4 text-2xl">Sticky elements example</Title>
         <Container className="h-[600px] bg-gray-600 flex flex-col">
           <Container className="w-[500px] h-[200px] bg-blue-600 mb-3 sticky top-0"></Container>

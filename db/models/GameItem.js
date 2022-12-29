@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 import bcrypt from 'bcrypt';
 
-const User = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   username: String,
   email: String,
   password: String,
@@ -15,4 +15,4 @@ const User = new mongoose.Schema({
 //   }
 // });
 
-export default mongoose.models.User || mongoose.model('User', User);
+export default mongoose.models.User || mongoose.model('User', userSchema);

@@ -1,27 +1,19 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import dbConnect from '../../db/connectDB';
-import User from '../../db/models/User';
+import withApiHeaders from '../../lib/middleware/withApiHeaders';
+import withDBConnect from '../../lib/middleware/withDBConnect';
 
-dbConnect();
-
-export default async function handler(req, res) {
-  const { method } = req;
-  res.setHeader('access-control-allow-origin', '*');
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS, POST, PUT, *");
-  res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
-
+const handler = async function(req, res) {
   try {
+    const { method, db } = req;
 
     switch (method) {
       case 'GET': 
-        const users = await User.find({});
+        const users = await db.User.find({});
         res.status(200).json({ got: 'something', users });
         break;
 
       case 'POST': 
-        const user = await User.create({
+        const user = await db.User.create({
           ...req.body
         });
 
@@ -41,5 +33,6 @@ export default async function handler(req, res) {
     console.log('Error: ', err);
     res.status(200).json({ status: 'SERVER_ERROR', message: err });
   }
-
 };
+
+export default withDBConnect(withApiHeaders(handler));

@@ -11,6 +11,8 @@ import Link from 'next/link';
 import Icons from '../public/icons';
 import Enum from '../enum';
 import useLocalStorageState from '../hooks/useLocalStorageState'
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import IconText from '../components/typography/IconText';
 
 /*
@@ -23,6 +25,7 @@ import IconText from '../components/typography/IconText';
 */
 
 export default function Home() {
+  const [creatures, setCreatures] = useState([]);
   const [testLocalStorage, setTestLocalStorage] = useLocalStorageState('test_key', 'initial_value');
   
   const updateLocalStorage = () => {
@@ -134,7 +137,27 @@ export default function Home() {
           Post Creatures Data
         </Button>
 
+        <Button onClick={async () => {
+          const res = await fetch('/api/creatures', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          const data = await res.json();
+          setCreatures(data);
+          console.log('got back from get: ', data);
+        }}>
+          Get Creatures
+        </Button>
 
+        <Container>
+          {
+            creatures.map(creature => {
+              return <Text key={uuidv4()}>{creature.name}</Text>
+            })
+          }
+        </Container>
 
         <Title className="my-4 text-2xl">Sticky elements example</Title>
         <Container className="h-[600px] bg-gray-600 flex flex-col">

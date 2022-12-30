@@ -17,7 +17,15 @@ const LayoutController = ({ children }) => {
           <Layouts.ExampleLayout.Root.value>
             {children}
           </Layouts.ExampleLayout.Root.value>
-        )
+        );
+
+      case Layouts.PrimaryLayout:
+        return (
+          <Layouts.PrimaryLayout.Root.value>
+            {children}
+          </Layouts.PrimaryLayout.Root.value>
+        );
+        
       default:
         return children;
     }

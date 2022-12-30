@@ -35,3 +35,17 @@ input {
 .wireframe * {
   outline: 1px solid red !important;
 }
+
+.shadows-font {
+  font-family: 'Shadows Into Light', cursive;
+  letter-spacing: 3px;
+}
+
+.fredoka-font {
+  font-family: 'Fredoka One', cursive;
+}
+
+.logo-font {
+  /* color: #ff00f5; */
+  font-family: 'Rubik Vinyl', cursive;
+}

@@ -3,6 +3,7 @@
 import { EnumCollection, EnumItem } from './Enum';
 
 import ExampleLayout from '../components/layouts/ExampleLayout';
+import PrimaryLayout from '../components/layouts/PrimaryLayout';
 
 const Layouts = new EnumCollection({
   ExampleLayout: new EnumCollection({
@@ -15,6 +16,15 @@ const Layouts = new EnumCollection({
     })
   }),
 
+  PrimaryLayout: new EnumCollection({
+    Name: new EnumItem({ value: 'PrimaryLayout' }),
+    Root: new EnumItem({ value: PrimaryLayout }),
+
+    Components: new EnumCollection({
+      Header: new EnumItem({ name: 'Header', value: PrimaryLayout.Header }),
+      Footer: new EnumItem({ name: 'Footer', value: PrimaryLayout.Footer })
+    })
+  })
 })
 
 export default Layouts;

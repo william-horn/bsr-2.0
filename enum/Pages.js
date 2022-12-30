@@ -38,7 +38,7 @@ const Pages = new EnumCollection({
       
     },
 
-    layout: Layouts.ExampleLayout,
+    layout: Layouts.PrimaryLayout,
   }),
   
   Example: new EnumItem({

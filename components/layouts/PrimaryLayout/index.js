@@ -34,6 +34,7 @@ const PrimaryLayout = ({ children }) => {
         <FillImage 
         className="w-full h-[280px] absolute"
         imgClassName="object-cover opacity-50"
+        priority
         remove="relative"
         sizes="1920px"
         src={Images.HomeHeaderImg}

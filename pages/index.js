@@ -25,11 +25,58 @@ import IconText from '../components/typography/IconText';
 */
 
 export default function Home() {
+
+
+  const first = (id, value) => {
+    // console.log('button was clicked: ', id, value);
+  }
+
   return (
-    <Container className="min-h-screen">
+    <Container className="min-h-screen p-3">
+
       <Container>
-        {/* <Title className="font-bold text-zinc-100">Some cool facts</Title> */}
+        {/* <Button.Group 
+        initial="one"
+        onSelect={first}
+        defaultStyle=""
+        selectedStyle=""
+        >
+          <Button.Member id="one">Current</Button.Member>
+          <Button.Member id="two">Other</Button.Member>
+          <Button.Member id="three">Another</Button.Member>
+          <Button.Report></Button.Report>
+          <Button.Reset></Button.Reset> 
+        </Button.Group> */}
+
+        <Text>Multiple choice:</Text>
+
+        <Button.Group 
+        initial="two"
+        maxSelect={4}
+        onSelect={first}
+        defaultStyle=""
+        selectedStyle="bg-white"
+        >
+          <Button.Member id="one" value="First">Current</Button.Member>
+          <Button.Member id="two" value="Second">Other</Button.Member>
+          <Button.Member id="three" value="Third">Another</Button.Member>
+        </Button.Group>
+
+        <Button.Group 
+        initial={["six", "four"]}
+        maxSelect={4}
+        onSelect={first}
+        defaultStyle="text-red-700"
+        defaultStyleRemove="bg-black"
+        selectedStyle="bg-black"
+        selectedStyleRemove="text-red-700"
+        >
+          <Button.Member id="four" value="fourth">Four</Button.Member>
+          <Button.Member id="five" value="fifth">Five</Button.Member>
+          <Button.Member id="six" value="sixth">Six</Button.Member>
+        </Button.Group>
       </Container>
+      
     </Container>
   )
 }

@@ -9,6 +9,7 @@ const FillImage = ({
   remove, 
   imgClassName,
   imgRemove,
+  priority,
   src, 
   sizes="100px", 
   alt="placeholder", 
@@ -30,6 +31,7 @@ const FillImage = ({
         extend: imgClassName,
         remove: imgRemove
       })}
+      priority={priority}
       src={src}
       alt={alt}
       sizes={sizes}

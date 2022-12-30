@@ -106,11 +106,12 @@ const SearchBar = ({
 
   // When a search is submitted in the search bar
   const onEnter = (event) => {
-    if (event.key === Enum.KeyNames.Enter.value) {
+    if (event.key === Enum.Keys.Enter.value) {
       filterSearch(searchFieldRef.current.value);
     }
   }
 
+  // Render out a single search result
   const renderSearchResult = (result) => (
     <Button 
     key={uuidv4()}

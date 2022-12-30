@@ -1,4 +1,9 @@
 import '../styles/globals.css';
+import Enum from '../enum';
+
+const {
+  Pages
+} = Enum;
 
 import AppProvider from '../providers/AppProvider';
 import LayoutController from '../components/layouts';
@@ -6,7 +11,6 @@ import Container from '../components/Container';
 
 import { useRouter } from 'next/router';
 import { useEffect, useRef } from 'react';
-import { findPageByUrl } from '../config/page.config';
 
 if (typeof window !== 'undefined') {
   const allEl = window.document.querySelector("body");
@@ -24,7 +28,7 @@ if (typeof window !== 'undefined') {
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const currentUrl = router.pathname;
-  const currentPage = findPageByUrl(currentUrl);
+  const currentPage = Pages.getPageFromUrl(currentUrl);
   const lastPageRef = useRef(null);
 
   useEffect(() => {

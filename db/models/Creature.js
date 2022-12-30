@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 const Creature = new mongoose.Schema({
   name: String,
   url: String,
+  trials: { type: Number, default: 0 },
   stats: {},
   drops: [
     {
@@ -12,7 +13,6 @@ const Creature = new mongoose.Schema({
         {
           name: String,
           url: String,
-          dropTrials: { type: Number, default: 0 },
           dropSuccesses: { type: Number, default: 0 },
           avgDropRate: { type: Number, default: 0 }
         }

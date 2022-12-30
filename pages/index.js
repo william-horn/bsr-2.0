@@ -40,8 +40,26 @@ export default function Home() {
   return (
     <Container className="bg-blue-500 page min-h-[200vh]">
       <Container className="w-[50%] mx-auto flex flex-col items-center bg-gray-500 h-full">
-        <Title className="my-4 text-2xl">Example of icons mixed in text</Title>
 
+        <Container className="flex p-3 w-full border-solid border-[2px] justify-between border-black gap-6">
+          <Container className="flex flex-1">
+            <Container className="flex flex-col w-full border-solid border-[1px] border-black">
+              <h2>Some Title 1</h2>
+              <p>Some content</p>
+            </Container>
+
+            <Container className="flex flex-col w-full border-solid border-[1px] border-black">
+              <h2>Some Title 2</h2>
+              <p>Some content</p>
+            </Container>
+          </Container>
+
+          <Container className="flex flex-col border-solid border-[1px] border-black">
+            <Container className="image w-[100px] h-[100px] bg-black"></Container>
+          </Container>
+        </Container>
+
+        <Title className="my-4 text-2xl">Example of icons mixed in text</Title>
         <Container className="w-[300px] h-[100px]">
           <IconText>
             <Text>Hello</Text> <IconImage src={Icons.GemIcon} size="26px"/> <Text>world</Text> 
@@ -72,7 +90,7 @@ export default function Home() {
         <Button>Just an ordinary button</Button>
 
         <Button onClick={async () => {
-          const res = await fetch('/api/test', {
+          const res = await fetch('/api', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json'
@@ -84,26 +102,6 @@ export default function Home() {
         }}>
           Get API Data
         </Button>
-
-        <Button onClick={async () => {
-          const res = await fetch('/api/test', {
-            method: 'POST',
-            body: JSON.stringify({ 
-              username: 'Frank',
-              password: 'some password',
-              email: 'frank@frank.com' 
-            }),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          });
-          const data = await res.json();
-
-          console.log('got back from post: ', data);
-        }}>
-          Post API Data
-        </Button>
-
 
         <Button onClick={async () => {
           const res = await fetch('/api/creatures', {
@@ -120,8 +118,8 @@ export default function Home() {
                 { 
                   category: 'ring', 
                   items: [
-                    { name: 'lucky', url: '.com', dropTrials: 0, dropSuccesses: 0, avgDropRate: 0 },
-                    { name: 'gold', url: '.com', dropTrials: 0, dropSuccesses: 0, avgDropRate: 0 },
+                    { name: 'lucky', url: '.com', dropSuccesses: 0, avgDropRate: 0 },
+                    { name: 'gold', url: '.com', dropSuccesses: 0, avgDropRate: 0 },
                   ]
                 }
               ]
@@ -149,6 +147,19 @@ export default function Home() {
           console.log('got back from get: ', data);
         }}>
           Get Creatures
+        </Button>
+
+        <Button onClick={async () => {
+          const res = await fetch('/api/creatures', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          const data = await res.json();
+          console.log('got back from update: ', data);
+        }}>
+          Update Creatures
         </Button>
 
         <Container>

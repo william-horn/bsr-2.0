@@ -1,16 +1,20 @@
 
 
 import StorageKeys from './StorageKeys';
-import LayoutNames from './LayoutNames';
+import Layouts from './Layouts';
 import Themes from './Themes';
 import SearchState from './SearchState';
-import KeyNames from './KeyNames';
+import Keys from './Keys';
+import Pages from './Pages';
 
-export default {
+const Enum = {
   StorageKeys,
-  LayoutNames,
+  Layouts,
   Themes,
   SearchState,
-  KeyNames
+  Pages,
+  Keys,
 }
+
+export default Enum;
 

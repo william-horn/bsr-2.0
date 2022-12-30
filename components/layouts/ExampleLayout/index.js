@@ -11,9 +11,9 @@ const ExampleLayout = ({ children }) => {
 
   return (
     <Container className="example-layout">
-      <Header>
+      {currentPage.includes('header') && <Header>
         <Header.Title>Example Header</Header.Title>
-      </Header>
+      </Header>}
 
       <Container className="layout-body">
         {children}
@@ -25,6 +25,9 @@ const ExampleLayout = ({ children }) => {
     </Container>
   );
 };
+
+ExampleLayout.Header = Header;
+ExampleLayout.Footer = Footer;
 
 export default ExampleLayout;
 

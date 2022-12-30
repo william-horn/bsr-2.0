@@ -5,7 +5,8 @@ const handler = async function (req, res) {
   try {
     const { 
       method, 
-      db, 
+      models,
+      db,
       query, 
       headers,
       body: payload
@@ -13,7 +14,7 @@ const handler = async function (req, res) {
 
     switch (method) {
       case 'GET':
-        const creatures = await db.Creature.find({}).limit(50);
+        const creatures = await models.Creature.find({}).limit(50);
         res.status(200).json(creatures);
 
         break;
@@ -22,12 +23,10 @@ const handler = async function (req, res) {
         let postedData;
 
         if (query.bulk === 'true') {
-          postedData = await db.Creature.insertMany(payload);
+          postedData = await models.Creature.insertMany(payload);
           
         } else {
-          postedData = await db.Creature.create({
-            ...payload
-          });
+          postedData = await models.Creature.create(payload);
         }
 
         res.status(200).json({
@@ -35,6 +34,19 @@ const handler = async function (req, res) {
           data: postedData,
         });
 
+        break;
+
+      case 'PUT': 
+
+        // const updated = await db.collections.creatures.updateMany({}, {
+        //   $unset: { "drops.$[].items.$[].dropTrials": "" }
+        // });
+        const test = await models.Creature.update({ name: 'Aberrant Dragon Titan' }, {
+          $set: { testKey: 'lol' }
+        });
+
+        res.status(200).json({ message: 'worked', info: test });
+        
         break;
 
       default:

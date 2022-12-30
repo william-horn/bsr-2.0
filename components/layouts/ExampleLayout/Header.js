@@ -1,5 +1,6 @@
 
 import Container from '../../Container';
+import { useAppContext } from '../../../providers/AppProvider';
 
 const Header = ({ children }) => {
   return (

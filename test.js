@@ -48,3 +48,70 @@ const Creatures = [
   }
 
 ]
+
+
+
+
+
+
+
+import { useState } from 'react';
+
+
+const Page = () => {
+
+  const [fetchedData, setFetchedData] = useState([]);
+
+  const getApiData = async () => {
+    const response = await fetch();
+
+    const data1 = await response.json();
+    const data2 = await response.json();
+    const data3 = await response.json();
+
+
+
+    setFetchedData([
+      ...(data1.data),
+      ...data2,
+      ...data3,
+    ]);
+  }
+
+
+  return (
+    <div>
+      
+      <button onClick={getApiData}>
+
+      </button>
+
+      {
+        fetchedData.map(itemData => {
+          return (
+            <div>
+              <p className="p-2 mb-1 text-blue-500">{itemData.name}</p>
+              <img src={itemData.image} />
+            </div>
+          );
+        })
+      }
+    </div>
+  );
+};
+
+export default Page;
+
+
+
+
+
+
+
+
+
+
+
+
+
+

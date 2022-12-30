@@ -5,6 +5,7 @@ const Text = ({ className="", remove, children }) => {
   return (
     <p
     className={buildClassName({
+      className: "text-white",
       extend: className,
       remove})
     }>

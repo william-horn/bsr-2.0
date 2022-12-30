@@ -9,7 +9,7 @@ const Header = React.forwardRef(({ children, className, remove }, ref) => {
     <header 
     ref={ref}
     className={buildClassName({
-      className: "bg-zinc-800 py-4",
+      className: "bg-zinc-800 relative",
       extend: className,
       remove,
     })}
@@ -23,7 +23,7 @@ Header.Title = ({ children, className, remove }) => {
   return (
     <h1 
     className={buildClassName({
-      className: "text-6xl font-bold text-center select-none text-stone-100 logo-font",
+      className: "text-6xl font-bold text-center select-none text-stone-100 logo-font drop-shadow-[2px_4px_6px_black]",
       extend: className,
       remove,
     })}

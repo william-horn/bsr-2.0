@@ -31,15 +31,26 @@ const PrimaryLayout = ({ children }) => {
   return (
     <Container className="primary-layout">
       <Header>
-        <Header.Title className="relative flex flex-col flex-wrap items-center justify-center mx-auto break-all 3xsm:flex-row text-alpha w-fit">
-          <span>Raven</span>
-          <FillImage 
-          src={Images.Logo} 
-          className="w-[75px] h-[75px] min-w-[75px] min-h-[75px] 3xsm:ml-[-20px] ml-0"
-          sizes="75px"
-          />
-        </Header.Title>
+        <FillImage 
+        className="w-full h-[280px] absolute"
+        imgClassName="object-cover opacity-50"
+        remove="relative"
+        sizes="1920px"
+        src={Images.HomeHeaderImg}
+        />
+        
+        <Container className="py-6">
+          <Header.Title className="relative flex flex-col flex-wrap items-center justify-center mx-auto break-all 3xsm:flex-row text-alpha w-fit">
+            <span>Raven</span>
+            <FillImage 
+            src={Images.LogoImg} 
+            className="w-[75px] h-[75px] min-w-[75px] min-h-[75px] 3xsm:ml-[-20px] ml-0"
+            sizes="75px"
+            />
+          </Header.Title>
+        </Container>
       </Header>
+      
       <Navbar/>
 
       <Container className="relative min-h-screen layout-body bg-zinc-900">

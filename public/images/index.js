@@ -1,7 +1,9 @@
-import Logo from './logo.webp';
+import LogoImg from './logo.webp';
+import HomeHeaderImg from './header-bg.webp';
 
 const Images = {
-  Logo
+  LogoImg,
+  HomeHeaderImg
 }
 
 export default Images;

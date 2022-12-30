@@ -18,7 +18,7 @@ const FillImage = ({
   return (
     <Container
     className={buildClassName({
-      className: "relative",
+      className: "relative fill-image",
       extend: className,
       remove
     })}

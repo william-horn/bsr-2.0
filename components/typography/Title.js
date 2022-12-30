@@ -6,7 +6,7 @@ const Title = ({ className="", remove, children }) => {
   return (
     <h2 
     className={buildClassName({
-      base: "text-center",
+      className: "text-center",
       extend: className,
       remove})
     }>

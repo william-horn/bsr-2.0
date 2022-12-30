@@ -26,9 +26,9 @@ import IconText from '../components/typography/IconText';
 
 export default function Home() {
   return (
-    <Container className=" bg-zinc-900 page min-h-[200vh]">
+    <Container className="min-h-screen">
       <Container>
-        <Title className="font-bold text-zinc-100">Some cool facts</Title>
+        {/* <Title className="font-bold text-zinc-100">Some cool facts</Title> */}
       </Container>
     </Container>
   )

@@ -11,10 +11,11 @@ const Footer = React.forwardRef(({ children, className, remove, style }, ref) =>
     ref={ref} 
     style={style} 
     className={buildClassName({
-      base: "py-4 bg-zinc-800",
+      className: "py-4 bg-zinc-800",
       extend: className,
       remove
-    })}>
+    })}
+    >
       {children}
     </footer>
   );
@@ -24,8 +25,10 @@ Footer.Title = ({ children, className }) => {
   return (
     <Title
     className={buildClassName({
+      className: "text-2xl font-medium",
       extend: className
-    })}>
+    })}
+    >
       {children}
     </Title>
   );

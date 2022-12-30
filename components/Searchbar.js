@@ -148,7 +148,7 @@ const SearchBar = ({
 
   if (searchState === Enum.SearchState.Focused.value) {
     searchBarClass = buildClassName({ 
-      base: searchBarClass, 
+      className: searchBarClass, 
       extend: 'rounded-b-none',
     });
   }
@@ -157,7 +157,7 @@ const SearchBar = ({
     <Container
     ref={searchBarRef}
     className={buildClassName({
-      base: searchBarClass,
+      className: searchBarClass,
       extend: className,
       remove
     })}>

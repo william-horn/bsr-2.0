@@ -10,11 +10,12 @@ const IconImage = ({ className="", remove, src, size="48px" }) => {
   return (
     <Container
     className={buildClassName({
-      base: "icon-container relative inline-block",
+      className: "icon-container relative inline-block",
       extend: className,
       remove
     })}
-    style={{minWidth: size, height: size}}>
+    style={{minWidth: size, height: size}}
+    >
       <Image src={src} alt="icon" sizes={size} fill />
     </Container>
   );

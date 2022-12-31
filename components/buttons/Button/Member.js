@@ -1,8 +1,9 @@
 
+import { useButtonGroupContext } from '../../../providers/ButtonGroupProvider';
 import buildClassName from "../../../lib/helpers/buildClassName";
-import Button from ".";
+import Button from './Button';
 
-Button.Member = ({ 
+const ButtonGroupMember = ({ 
   children, 
   onClick=() => {},
   id,
@@ -60,3 +61,5 @@ Button.Member = ({
     </Button>
   );
 }
+
+export default ButtonGroupMember;

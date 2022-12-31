@@ -1,6 +1,5 @@
 
 import Container from "./Container";
-import Text from "./typography/Text";
 import buildClassName from "../lib/helpers/buildClassName";
 import stringIsEmpty from '../lib/helpers/stringIsEmpty';
 import IconImage from "./IconImage";
@@ -53,6 +52,7 @@ const SearchBar = ({
   useEffect(() => {
     window.addEventListener('mousedown', onSearchUnfocus);
     window.addEventListener('blur', unfocusSearch);
+    console.log('running search bar');
     return () => {
       window.removeEventListener('mousedown', onSearchUnfocus);
       window.removeEventListener('blur', unfocusSearch);

@@ -29,7 +29,7 @@ const ButtonGroup = ({
     return { found: idIndex !== -1, index: idIndex };
   }
 
-  const updateActiveIds = (buttonId, isSelected) => {
+  const updateActiveIds = (buttonId, value, isSelected) => {
     if (isSelected) {
       _setActiveIds(prev => {
         const idResult = findActiveId(buttonId);
@@ -68,6 +68,7 @@ const ButtonGroup = ({
   return (
     <ButtonGroupProvider 
     value={{
+      activeIds,
       selectedStyle,
       selectedStyleRemove,
       defaultStyle,

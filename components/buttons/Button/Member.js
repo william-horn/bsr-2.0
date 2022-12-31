@@ -42,7 +42,7 @@ const ButtonGroupMember = ({
       group_onSelect(id, value);
     }
     
-    updateActiveIds(id, isSelected);
+    updateActiveIds(id, value, isSelected);
   }
 
   // console.log('re-rendered button with state: ', activeIds);

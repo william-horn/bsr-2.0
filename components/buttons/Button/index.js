@@ -1,11 +1,10 @@
 
-import IconImage from "../IconImage";
-import Container from "../Container";
+import IconImage from "../../IconImage";
+import Container from "../../Container";
 import Link from "next/link";
-import { useState, useEffect } from 'react';
-import ButtonGroupProvider, { useButtonGroupContext } from '../../providers/ButtonGroupProvider';
-import buildClassName from "../../lib/helpers/buildClassName";
-import React from "react";
+import React, { useState } from 'react';
+import ButtonGroupProvider, { useButtonGroupContext } from '../../../providers/ButtonGroupProvider';
+import buildClassName from "../../../lib/helpers/buildClassName";
 
 // const PageContext = createContext();
 // export const usePageContext = () => useContext(PageContext);
@@ -69,7 +68,7 @@ const Button = ({
   );
 };
 
-Button.Member = ({ 
+const Member = ({ 
   children, 
   onClick=() => {},
   id,
@@ -128,7 +127,7 @@ Button.Member = ({
   );
 }
 
-Button.Group = ({ 
+const Group = ({ 
   children, 
   className, 
   remove, 
@@ -215,6 +214,9 @@ Button.Group = ({
     </ButtonGroupProvider>
   );
 }
+
+Button.Member = Member;
+Button.Group = Group;
 
 export default Button;
 

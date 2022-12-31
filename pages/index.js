@@ -62,20 +62,49 @@ export default function Home() {
         </Button.Group> */}
 
         <Button.Group 
-        initial={["six"]}
-        maxSelect={4}
-        selectedStyle="bg-blue-500"
-        selectedStyleRemove="bg-black"
-        onSelect={(id, value) => {console.log('selected: ', id, value); setHomeState(value)}}
-        onUnselect={(id, value) => console.log('unselect: ', id, value)}
+        initial={["four", "nine"]}                        // *the initially selected buttons
+        maxSelect={4}                                    // !if multiple choice, limit selection to this number
+        minSelect={4}                                    // !if multiple choice, must choose a minimum of this number
+        defaultStyle="bg-blue-500 TESTER-THING"                                 // *the tailwind default style for all <Button.Member> components
+        defaultStyleRemove="bg-black"                           // *the tailwind default styles to be removed
+        selectedStyle="bg-red-700 custom-button"                      // *the tailwind style applied when a button is selected
+        selectedStyleRemove="bg-blue-500"                   // *the tailwind styles REMOVED when a button is selected
+        onReport={(report) => {}}                        // !fires when the <Button.Report> component is clicked (returns data object about selected button(s))
+        onSelect={(buttonData) => {}}                    // !fires when a button is initially selected
+        onUnselect={(buttonData) => {}}                  // !fires when a button has been unselected
+        onReset={(report) => {}}                         // !fires when the button group has been reset by a <Button.Reset> click
+        onClick={(buttonData) => {}}                     // !fires when a <Button.Member> component is clicked
         >
-          <Button.Member id="four" value="fourth">Four</Button.Member>
-          <Button.Member id="five" value="fifth">Five</Button.Member>
-          <Button.Member id="six" value="sixth">Six</Button.Member>
-          <Button.Member id="seven" value="seventh">Seven</Button.Member>
-          <Button.Member id="eight" value="eighth">Eight</Button.Member>
-          <Button.Member id="nine" value="ninth">Nine</Button.Member>
-          <Button.Report>Report</Button.Report>
+          <Button.Member 
+          id="four" 
+          value="fourth"
+          // className="custom-button"
+          remove="custom-button"
+          // selectedStyle="custom-button"
+          // selectedStyleRemove="custom-button"
+          >
+            Four
+          </Button.Member>
+
+
+          <Button.Member 
+          id="five" 
+          value="fifth"
+          remove="custom-button"
+          selectedStyle="custom-button"
+          >
+            Five
+          </Button.Member>
+
+          <Button.Report 
+          onReport={(report) => {}}
+          >
+            Report
+          </Button.Report>
+
+          <Button.Reset>
+            Reset
+          </Button.Reset>
         </Button.Group>
 
         <Text>Break</Text>
@@ -94,7 +123,7 @@ export default function Home() {
           <Button.Member id="seven" value="seventh">Seven</Button.Member>
           <Button.Member id="eight" value="eighth">Eight</Button.Member>
           <Button.Member id="nine" value="ninth">Nine</Button.Member>
-          <Button.Report>Report</Button.Report>
+          <Button.Report onReport={rep => console.log('with: ', rep)}>Report</Button.Report>
         </Button.Group>
       </Container>
       

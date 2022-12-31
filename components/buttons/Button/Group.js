@@ -1,6 +1,6 @@
 
 import Container from "../../Container";
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ButtonGroupProvider from '../../../providers/ButtonGroupProvider';
 import buildClassName from "../../../lib/helpers/buildClassName";
 
@@ -13,11 +13,17 @@ const ButtonGroup = ({
   defaultStyle="",
   defaultStyleRemove="",
   initial="",
+  onReport=() => {},
   onSelect=() => {},    // fires only when a button is unselected
   onUnselect=() => {},  // fires only when a button is selected 
-  onClick=() => {}      // fires whenever a button is clicked
+  onClick=() => {},      // fires whenever a button is clicked
+  initClickHandlers=false,
+  initSelectHandlers=false,
+  initUnselectHandlers=false,
+  initReportHandlers=false,
 }) => {
   const multiple = Array.isArray(initial);
+  const reportData = useRef([]);
 
   const [activeIds, _setActiveIds] = useState(() => {
     if (!multiple) return [initial];
@@ -29,7 +35,7 @@ const ButtonGroup = ({
     return { found: idIndex !== -1, index: idIndex };
   }
 
-  const updateActiveIds = (buttonId, value, isSelected) => {
+  const updateActiveIds = (buttonId, isSelected) => {
     if (isSelected) {
       _setActiveIds(prev => {
         const idResult = findActiveId(buttonId);
@@ -61,9 +67,11 @@ const ButtonGroup = ({
         return prev;
       });
     }
-
-    // console.log('new state: ', activeIds);
   }
+
+  useEffect(() => {
+    if (initReportHandlers) onReport(reportData.current);
+  }, []);
 
   return (
     <ButtonGroupProvider 
@@ -78,6 +86,10 @@ const ButtonGroup = ({
       onUnselect,
       onClick,
       findActiveId,
+      reportData,
+      initClickHandlers,
+      initSelectHandlers,
+      initUnselectHandlers,
     }}
     >
       <Container

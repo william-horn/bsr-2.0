@@ -4,6 +4,7 @@
 import IconImage from "../../IconImage";
 import Link from "next/link";
 import buildClassName from "../../../lib/helpers/buildClassName";
+import { useEffect } from 'react';
 
 // const PageContext = createContext();
 // export const usePageContext = () => useContext(PageContext);
@@ -22,13 +23,13 @@ const Button = ({
   children, 
   onClick, 
   rightIcon, 
+  initClickHandlers,
   leftIcon,
   leftIconSize="24px",
   rightIconSize="24px",
   url,
 }) => {
 
-  // todo: maybe don't give buttons a hover effect by default?
   const buttonClass = buildClassName({
     className: "relative flex items-center px-2 m-2 bg-black transition-all rounded custom-button min-w-fit",
     extend: className,
@@ -49,6 +50,10 @@ const Button = ({
 
     {renderIcon(rightIcon, rightIconSize)}
   </>;
+
+  useEffect(() => {
+    if (initClickHandlers) onClick();
+  }, []);
 
   return (
     url

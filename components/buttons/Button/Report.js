@@ -1,23 +1,34 @@
 
 import { useButtonGroupContext } from '../../../providers/ButtonGroupProvider';
-import buildClassName from "../../../lib/helpers/buildClassName";
+import { useEffect } from 'react';
 import Button from './Button';
 
 const Report = ({ 
   children,
-  onClick,
-  onReport=() => {}
+  className,
+  remove,
+  onReport=() => {},
+  initClickHandlers,
+  initReportHandlers,
 }) => {
-  const groupContext = useButtonGroupContext();
+  const {
+    reportData,
+  } = useButtonGroupContext();
 
   const processReport = () => {
-    onReport();
+    onReport(reportData.current);
   }
+
+  useEffect(() => {
+    if (initReportHandlers) processReport();
+  }, []);
 
   return (
     <Button
-    onClick={onClick}
-    onReport={processReport}
+    className={className}
+    remove={remove}
+    initClickHandlers={initClickHandlers}
+    onClick={processReport}
     >
       {children}
     </Button>

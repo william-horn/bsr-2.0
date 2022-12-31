@@ -65,6 +65,7 @@ export default function Home() {
         initial={["six"]}
         maxSelect={4}
         selectedStyle="bg-blue-500"
+        selectedStyleRemove="bg-black"
         onSelect={(id, value) => {console.log('selected: ', id, value); setHomeState(value)}}
         onUnselect={(id, value) => console.log('unselect: ', id, value)}
         >
@@ -83,6 +84,7 @@ export default function Home() {
         initial={["six"]}
         maxSelect={4}
         selectedStyle="bg-red-700"
+        selectedStyleRemove="bg-black"
         onSelect={(id, value) => console.log('selected: ', id, value)}
         onUnselect={(id, value) => console.log('unselect: ', id, value)}
         >

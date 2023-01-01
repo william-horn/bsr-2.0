@@ -1,7 +1,7 @@
 /*
   @author: William J. Horn
 
-  Sub-component of <Button>
+  Extension of <Button> intended for child of <Button.Group>
 */
 
 import { useButtonGroupContext } from '../../../providers/ButtonGroupProvider';

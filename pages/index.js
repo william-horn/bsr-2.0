@@ -32,6 +32,32 @@ export default function Home() {
   return (
     <Container className="min-h-screen p-3">
 
+
+      <Button.Group
+      defaultStyles={{
+        self: "bg-black"
+      }}
+
+      selectedStyles={{
+        "self:remove": "bg-black",
+        self: "bg-red-700",
+        header: "yes",
+      }}
+
+      moreStyles={{
+        header: "more",
+        "self:remove": "bg-red-700"
+      }}
+      >
+
+        <Button.Member
+
+        >
+
+        </Button.Member>
+
+      </Button.Group>
+
       <Test
       className={{
         // self: "bg-blue-500",
@@ -41,8 +67,18 @@ export default function Home() {
         "header:remove": "bg-white",
         header: {
           self: "PLS",
-          title: "bg-black",
-          "title:remove": "bg-green-500"
+          title: "bg-black h-[50px]",
+          "title:remove": "bg-green-500",
+          header: {
+
+          },
+          
+          _body: {
+
+          }
+          
+          // body: "new",
+          // "body:remove*": "something"
         }
         // header: {
         //   title: "text-red-700"
@@ -51,6 +87,19 @@ export default function Home() {
       >
         hello world
       </Test>
+
+
+      <Button
+      className={{
+        _self: "bg-black",
+        leftIcon: {
+          _self: "w-[50px] h-[50px]",
+          inner: "opacity-50",
+        }
+      }}
+      >
+        Button with Icon
+      </Button>
       
       
     </Container>

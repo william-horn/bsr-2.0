@@ -13,10 +13,6 @@ const ButtonGroupMember = ({
   children, 
   id,
   value,
-  className="",
-  remove="",
-  selectedStyle="",
-  selectedStyleRemove="",
   initSelectHandlers,
   initUnselectHandlers,
   initClickHandlers,
@@ -37,28 +33,15 @@ const ButtonGroupMember = ({
     onClick: group_onClick,
     onUnselect: group_onUnselect,
     findActiveId,
-    defaultStyle: group_defaultStyle,
-    defaultStyleRemove: group_defaultStyleRemove,
     reportData,
     initClickHandlers: group_initClickHandlers,
     initSelectHandlers: group_initSelectHandlers,
     initUnselectHandlers: group_initUnselectHandlers,
   } = buttonGroupContext;
 
-  // Momentary constants
+  // Constants
   const isSelected = findActiveId(id).found;
   const buttonData = { id, value };
-
-  // Momentary vars
-  let {
-    selectedStyle: group_selectedStyle, 
-    selectedStyleRemove: group_selectedStyleRemove
-  } = buttonGroupContext;
-
-  if (!isSelected) {
-    group_selectedStyle = '';
-    group_selectedStyleRemove = '';
-  }
 
   /*
     @runOnSelectHandlers
@@ -114,57 +97,6 @@ const ButtonGroupMember = ({
   }
 
   /*
-    @computeRenderedClassName 
-
-    Implements priority between the local <Button.Member> class names and 
-    the global <Button.Group> class names.
-
-    todo: come up with a better className hierarchy system later
-
-    Priority:
-      defaultStyle = base + defaultStyle
-      defaultStyleRemove > base
-      className = defaultStyle + className
-      className > defaultStyleRemove
-      remove > defaultStyle 
-      selectedStyle > remove
-      selectedStyleRemove > className
-  */
-  const computeRenderedClassName = () => {
-    let _className = 'button-member ' + group_defaultStyle;
-    
-    if (isSelected) {
-      _className = buildClassName({
-        className: _className,
-        extend: group_selectedStyle,
-        remove: group_selectedStyleRemove
-      });
-    }
-
-    _className = buildClassName({
-      className: _className,
-      extend: className,
-      remove: remove
-    });
-
-    if (isSelected) {
-      _className = buildClassName({
-        className: _className,
-        extend: selectedStyle,
-        remove: selectedStyleRemove
-      });
-    }
-
-    return {
-      className: _className,
-      remove: group_defaultStyleRemove + ' ' 
-        + remove + ' ' 
-        + group_selectedStyleRemove + ' ' 
-        + selectedStyleRemove
-    };
-  }
-
-  /*
     Update the report data based on whether or not the current button is selected.
 
     isSelected: 
@@ -198,7 +130,6 @@ const ButtonGroupMember = ({
 
   return (
     <Button
-    {...computeRenderedClassName()}
     onClick={processClick}
     >
       {children}

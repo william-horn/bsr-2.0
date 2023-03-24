@@ -6,12 +6,6 @@ import buildClassName from "../../../lib/helpers/buildClassName";
 
 const ButtonGroup = ({ 
   children, 
-  className, 
-  remove, 
-  selectedStyle="",
-  selectedStyleRemove="",
-  defaultStyle="",
-  defaultStyleRemove="",
   initial="",
   onReport=() => {},
   onSelect=() => {},    // fires only when a button is unselected

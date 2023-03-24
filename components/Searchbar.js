@@ -47,18 +47,6 @@ const SearchBar = ({
     }
   }
 
-  // Window events for detecting when using is unfocusing the search bar
-  // todo: centralize this logic in the top level component, and pass a callback to handle this instead of making a new event listener
-  useEffect(() => {
-    window.addEventListener('mousedown', onSearchUnfocus);
-    window.addEventListener('blur', unfocusSearch);
-    console.log('running search bar');
-    return () => {
-      window.removeEventListener('mousedown', onSearchUnfocus);
-      window.removeEventListener('blur', unfocusSearch);
-    }
-  }, []);
-
   // When the search bar is focused
   const onSearchFocus = () => {
     setSearchState(Enum.SearchState.Focused.value);
@@ -121,6 +109,18 @@ const SearchBar = ({
       {result}
     </Button>
   );
+
+  // Window events for detecting when using is unfocusing the search bar
+  // todo: centralize this logic in the top level component, and pass a callback to handle this instead of making a new event listener (?)
+  useEffect(() => {
+    window.addEventListener('mousedown', onSearchUnfocus);
+    window.addEventListener('blur', unfocusSearch);
+    console.log('running search bar');
+    return () => {
+      window.removeEventListener('mousedown', onSearchUnfocus);
+      window.removeEventListener('blur', unfocusSearch);
+    }
+  }, []);
 
   // The drop-down search results when the search bar is focused
   const renderSearchResults = () => {

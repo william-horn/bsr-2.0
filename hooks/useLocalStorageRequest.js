@@ -22,6 +22,13 @@ const useLocalStorageRequest = (key, value) => {
     dataRef.current = updated;
   }
 
+  /*
+    return the literal value:
+      const value = getter();
+
+    return an index from the value:
+      const value = getter("someIndex") => getter()["someIndex"]
+  */
   const getter = (domain) => {
     if (domain) {
       return dataRef.current[domain] || [];

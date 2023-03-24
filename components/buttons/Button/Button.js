@@ -23,19 +23,15 @@
 
 import IconImage from "../../IconImage";
 import Link from "next/link";
-import computeStyleData from '../../../lib/helpers/computeStyleData';
 import { useEffect, useState } from 'react';
 
 const Button = ({ 
-  className,
-  remove,
   children, 
   onClick, 
   rightIcon={ _empty: true }, 
   initClickHandlers,
   leftIcon={ _empty: true },
   url,
-  computeStyles
 }) => {
   const [_mutableProps, _setMutableProps] = useState({
     className,

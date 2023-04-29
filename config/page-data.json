@@ -1,0 +1,38 @@
+
+[
+  {
+    "title": "Home",
+    "description": "The main landing page content of the website",
+
+    "id": "home",
+    "enumName": "Home",
+    "renderedName": "Home",
+    "url": "/",
+    "layout": {
+      "name": "ExampleLayout",
+      "render": {}
+    }
+  },
+
+  {
+    "title": "About",
+    "description": "Verbose information about the website, and it's purpose",
+
+    "id": "about",
+    "enumName": "About",
+    "renderedName": "About",
+    "url": "/about",
+    "layout": {
+      "name": "ExampleLayout"
+    }
+  },
+
+  {
+    "title": "Not Found",
+    "description": "The requested page has not been found or does not exist",
+    
+    "enumName": "NotFound",
+    "id": "not_found",
+    "url": "/_error"
+  }
+]

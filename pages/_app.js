@@ -1,9 +1,5 @@
 import '../styles/globals.css';
-import Enum from '../enum';
-
-const {
-  Pages
-} = Enum;
+import pageDataAPI from '../lib/pageDataAPI';
 
 import AppProvider from '../providers/AppProvider';
 import LayoutController from '../components/layouts';
@@ -29,7 +25,7 @@ if (typeof window !== 'undefined') {
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const currentUrl = router.pathname;
-  const currentPage = Pages.getPageFromUrl(currentUrl);
+  const currentPage = pageDataAPI.getPageFrom("url", currentUrl);
   const lastPageRef = useRef(null);
 
   useEffect(() => {

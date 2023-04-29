@@ -1,7 +1,7 @@
 
 import Container from '../../Container';
 import React from 'react';
-import Text from '../../typography/Text';
+// import Text from '../../typography/Text';
 import Header from './Header';
 import Footer from './Footer';
 import { useAppContext } from '../../../providers/AppProvider';
@@ -11,9 +11,9 @@ const ExampleLayout = ({ children }) => {
 
   return (
     <Container className="example-layout">
-      {currentPage.includes('header') && <Header>
+      <Header>
         <Header.Title>Example Header</Header.Title>
-      </Header>}
+      </Header>
 
       <Container className="layout-body">
         {children}

@@ -1,6 +1,6 @@
 
 import Container from "../../Container";
-import Title from '../../typography/Title';
+// import Title from '../../typography/Title';
 
 const Footer = ({ children }) => {
   return (
@@ -12,7 +12,7 @@ const Footer = ({ children }) => {
 
 Footer.Title = ({ children }) => {
   return (
-    <Title className="text-center text-black">{children}</Title>
+    <h2 className="text-center text-black">{children}</h2>
   )
 }
 

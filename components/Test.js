@@ -3,9 +3,9 @@
 import formatClassQueryToSchema from "../lib/helpers/formatClassQueryToSchema";
 import TestAgain from './TesAgain';
 
-const Test = ({ className, children }) => {
+const Test = ({ className: _className, children }) => {
 
-  const classes = formatClassQueryToSchema(className, {
+  const className = {
     self: 'text-blue-500 bg-red-700',
     title: 'text-4xl font-bold',
     header: {
@@ -16,14 +16,16 @@ const Test = ({ className, children }) => {
         header: "YOINK",
       }
     }
-  });
+  };
+
+  const compiledClass = formatClassQueryToSchema(className, _className);
 
   return (
-    <div className={classes.self}>
-      <h2 className={classes.title}>Some title</h2>
-      <div className={classes.header.self}>
-        <h2 className={classes.header.title}>New title</h2>
-        <TestAgain className={classes.header.body}>
+    <div className={compiledClass.self}>
+      <h2 className={compiledClass.title}>Some title</h2>
+      <div className={compiledClass.header.self}>
+        <h2 className={compiledClass.header.title}>New title</h2>
+        <TestAgain className={compiledClass.header.body}>
           <p>Idk</p>
         </TestAgain>
       </div>

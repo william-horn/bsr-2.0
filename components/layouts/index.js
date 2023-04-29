@@ -1,29 +1,33 @@
 
-import Enum from '../../enum';
-const {
-  Layouts
-} = Enum;
-
+import { Layouts } from '../../enum';
 import Container from "../Container";
 import { useAppContext } from "../../providers/AppProvider";
+
+import ExampleLayout from './ExampleLayout';
+import PrimaryLayout from './PrimaryLayout';
+
+// export { 
+//   ExampleLayout,
+//   PrimaryLayout
+// };
 
 const LayoutController = ({ children }) => {
   const { currentPage } = useAppContext();
     
   const getRenderedLayout = () => {
-    switch (currentPage.layout) {
+    switch (Layouts[currentPage.layout.name]) {
       case Layouts.ExampleLayout:
         return (
-          <Layouts.ExampleLayout.Root.value>
+          <ExampleLayout>
             {children}
-          </Layouts.ExampleLayout.Root.value>
+          </ExampleLayout>
         );
 
       case Layouts.PrimaryLayout:
         return (
-          <Layouts.PrimaryLayout.Root.value>
+          <PrimaryLayout>
             {children}
-          </Layouts.PrimaryLayout.Root.value>
+          </PrimaryLayout>
         );
         
       default:

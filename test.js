@@ -105,6 +105,31 @@ export default Page;
 
 
 
+// client-side
+
+const response = await fetch("someurl/setlist?page=4&date=01-05-2022");
+
+
+
+
+
+// routing
+
+App.get("/setlist", async (req, res, ...args) => {
+
+  req.query = {
+    page: 4,
+    date: "01-05-2022"
+  }
+
+  console.log(req.query.page) // -> 4
+
+  const response = await fetch(`/setlist?page=${res.query.page}`)
+});
+
+
+
+
 
 
 
